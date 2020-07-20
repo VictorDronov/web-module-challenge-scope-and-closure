@@ -14,10 +14,12 @@
  * Invoking `processFirstItem` passing `['foo', 'bar']` and `(str) => str + str`,
  * should return 'foofoo'.
 */
+
+
 function processFirstItem(stringList, callback) {
   return callback(stringList[0])
 }
-
+console.log(processFirstItem(['foo','bar'], (str)=> str + str))
 // ⭐️ Example Challenge END ⭐️
 
 
@@ -27,11 +29,16 @@ function processFirstItem(stringList, callback) {
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
  * 1. What is the difference between counter1 and counter2?
+ * Counter 1 has a nested function inside of it. 
+ * Counter 2 uses a global variable and is a singular function.
  * 
  * 2. Which of the two uses a closure? How can you tell?
+ * counter 1 would be using a closure because it is using a function within a function.
  * 
- * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
- *
+ * 3. In what scenario would the counter1 code be preferable? 
+ * In what scenario would counter2 be better? 
+ *counter 1 would be preferale if there are multiple counts going 
+ counter 2 would be fine if there was only counter going 
 */
 
 // counter1 code
@@ -43,6 +50,9 @@ function counterMaker() {
 }
 
 const counter1 = counterMaker();
+console.log(counter1())
+console.log(counter1())
+console.log(counter1())
 
 // counter2 code
 let count = 0;
@@ -50,21 +60,27 @@ let count = 0;
 function counter2() {
   return count++;
 }
+console.log(counter2())
+console.log(counter2())
+console.log(counter2())
+
 
 
 /* Task 2: inning() 
 
-Write a function called `inning` that returns a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
+Write a function called `inning` that returns a random number of 
+points that a team scored in an inning. This should be a whole number 
+between 0 and 2. */
 
-function inning(/*Code Here*/){
-
-    /*Code Here*/
-
+function inning(){
+  return Math.floor(Math.random()*3);
 }
-
+console.log(inning())
 /* Task 3: finalScore()
 
-Write a higher order function called `finalScore` that accepts the callback function `inning` (from above) and a number of innings and and returns the final score of the game in the form of an object.
+Write a higher order function called `finalScore` that accepts the callback 
+function `inning` (from above) and a number of innings and and 
+returns the final score of the game in the form of an object.
 
 For example, 
 
@@ -76,11 +92,17 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
-
-  /*Code Here*/
-
+function finalScore(inning,innings){
+  let home = 0
+  let away = 0
+  for(let i=0; i<innings; i++){
+      home += inning()
+      away += inning()
+  } 
+  return final = {Home: home, Away: away}
 }
+console.log(finalScore(inning, 9))
+
 
 /* Task 4: 
 
