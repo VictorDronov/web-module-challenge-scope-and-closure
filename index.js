@@ -112,7 +112,7 @@ Create a function called `scoreboard` that accepts the following parameters:
 (2) Callback function `inning`
 (3) A number of innings
 
-and returns the score at each pont in the game, like so:
+and returns the score at each point in the game, like so:
 1st inning: awayTeam - homeTeam
 2nd inning: awayTeam - homeTeam
 3rd inning: awayTeam - homeTeam
@@ -122,11 +122,43 @@ and returns the score at each pont in the game, like so:
 7th inning: awayTeam - homeTeam
 8th inning: awayTeam - homeTeam
 9th inning: awayTeam - homeTeam
-Final Score: awayTeam - homeTeam */
+Final Score: awayTeam - homeTeam 
+*/
 
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(getInningScore,inning,numInnings) {
+  let scores = {home: 0, away:0}
+  let scoreText = ''
+  for (let i=0; i<numInnings; i++){
+    let score = getInningScore(inning)
+    scores.home = scores.home + score.Home 
+    scores.away = scores.away + score.Away 
+    if (i===0){
+      scoreText = `1st inning: ${scores.away}-${scores.home}\n`
+    } else if (i===1){
+      scoreText = scoreText + `2nd inning ${scores.away}-${scores.home}\n`
+    } else if (i===2){
+      scoreText = scoreText + `3rd inning ${scores.away}-${scores.home}\n`
+    } else {
+      scoreText = scoreText + `${i+1}th inning ${scores.away}- ${scores.home}\n`
+    } if (i+1===numInnings) {
+      score = getInningScore(inning)
+    scores.home = scores.home + score.Home 
+    scores.away = scores.away + score.Away 
+      scoreText = scoreText + `Final Score ${scores.away}-${scores.home}\n`
+    }
+  }
+  return scoreText 
 }
+console.log(scoreboard(getInningScore, inning, 9))
+
+
+function getInningScore(inning){
+  let home = inning()
+  let away = inning()
+  return final = {Home: home, Away: away}
+}
+
+console.log(getInningScore(inning,1))
 
 
