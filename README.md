@@ -42,6 +42,8 @@ Find the file `index.js` and complete the tasks.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+A Function within a function and the child function uses its parent function to 
+work. 
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -63,8 +65,10 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+At the end of the child function. That is where the child function ends.
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
 c. What is the lexical scope of `newRoll`? 
+everything inside of the child return function. 
 
 ### Task 2c - Exit Ticket
 
